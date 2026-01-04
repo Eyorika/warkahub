@@ -1,0 +1,253 @@
+Product Requirements Document (PRD)
+Product Name: WarkaHub
+
+Meaning: Warka (ወርቃ) – Ficus Vasta tree → community, trust, connection
+Tagline: Connecting Needs with Trusted Local Services
+
+1. Problem Statement
+
+In Ethiopia:
+
+Catering, event services, transport, labor, cleaning, and rentals are high-demand
+
+Clients struggle to find reliable vendors
+
+Vendors struggle to get consistent, high-paying clients
+
+Middlemen take high commissions without value
+
+No trusted “hub” that works like ride-hailing logic for services
+
+2. Solution Overview (WarkaHub)
+
+WarkaHub is a service-matching hub that connects:
+
+Clients → people or businesses who need services
+
+Vendors → service providers (catering, event, logistics, labor, etc.)
+
+Using a ride-style matching logic:
+
+Request → Match → Confirm → Deliver → Pay
+
+3. Target Market
+Primary (Start Here)
+
+B2B clients (fast money):
+
+Companies
+
+NGOs
+
+Schools
+
+Event organizers
+
+Secondary (Later)
+
+B2C clients:
+
+Weddings
+
+Funerals
+
+Parties
+
+Household needs
+
+Vendors
+
+Catering services
+
+Event decorators
+
+Transport providers
+
+Temporary workers
+
+Cleaning & setup teams
+
+4. Business Model (Simple & Realistic)
+Phase 1 – Manual (No Tech Cost)
+
+Revenue Model: Fixed Service Fee
+
+Example:
+
+Client order: 10,000 ETB
+
+WarkaHub fee: 500–1,000 ETB flat
+
+Vendor receives full price (no % confusion)
+
+👉 This avoids commission fights.
+
+Phase 2 – Semi-Automated
+
+Platform suggests vendors
+
+WarkaHub charges:
+
+Fixed fee OR
+
+Subscription from vendors (monthly)
+
+Phase 3 – Full Platform
+
+Small % commission (5–10%)
+
+Escrow-style payments
+
+Premium vendor visibility
+
+5. MVP Scope (What to Build First)
+MVP Goal:
+
+Validate demand, earn first money, learn behavior
+
+MVP = Manual + WhatsApp + Google Sheets
+Client Flow (Manual)
+
+Client messages WarkaHub (Telegram / WhatsApp)
+
+WarkaHub collects:
+
+Service type
+
+Date
+
+Location
+
+Budget
+
+WarkaHub matches vendor manually
+
+Vendor confirms
+
+Client confirms
+
+Service delivered
+
+WarkaHub collects fee
+
+Vendor Flow (Manual)
+
+Vendor registers via Google Form
+
+WarkaHub verifies manually
+
+Vendor added to vendor list
+
+Receives jobs via Telegram/Call
+
+Delivers service
+
+Gets paid directly by client
+
+6. Manual Matching Process (Step-by-Step)
+
+Client submits request
+
+Filter vendors by:
+
+Location
+
+Availability
+
+Price range
+
+Send request to top 2–3 vendors
+
+First confirmation wins
+
+Lock vendor
+
+Notify client
+
+Track delivery
+
+Collect WarkaHub fee
+
+7. Why This Works (Ride Logic)
+Ride App	WarkaHub
+Rider	Client
+Driver	Vendor
+Ride request	Service request
+Fare	Service price
+App fee	Hub fee
+
+You’re not inventing behavior — you’re copying proven logic.
+
+8. Growth Strategy
+Phase 1 – Zero Budget
+
+WhatsApp groups
+
+Telegram channels
+
+Personal outreach
+
+Event planners
+
+NGOs
+
+Phase 2 – Trust Building
+
+Vendor success stories
+
+Before/after events
+
+Testimonials
+
+Phase 3 – Scale
+
+City by city
+
+Category by category
+
+Partnerships
+
+9. Branding Direction
+
+Name: WarkaHub
+
+Symbol: Tree / roots / connection
+
+Tone: Trust, community, reliability
+
+Colors:
+
+Green (growth, trust)
+
+Earth tones
+
+10. Future Full App (Vision)
+Client App
+
+Service request form
+
+Vendor suggestions
+
+Price estimates
+
+Reviews
+
+Payment
+
+Vendor App
+
+Job notifications
+
+Availability toggle
+
+Earnings dashboard
+
+Admin Panel
+
+Matching engine
+
+Dispute handling
+
+Analytics
+
+Revenue tracking
