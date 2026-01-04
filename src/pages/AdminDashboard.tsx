@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import {
     Users, Store, Calendar, DollarSign, Activity,
-    CheckCircle, XCircle, Search, MoreVertical, LogOut
+    CheckCircle, XCircle, Search, LogOut
 } from 'lucide-react';
-import { useState } from 'react';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();

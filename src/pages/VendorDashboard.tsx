@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, DollarSign, Settings, Users, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { Calendar, DollarSign, Settings, Clock, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
@@ -77,7 +77,7 @@ const VendorDashboard = () => {
             ));
 
             // Recalc stats locally for better UX
-            setStats(prev => {
+            setStats(_prev => {
                 // Simple recalculation - accurate enough for optimistic update
                 const updatedBookings = bookings.map(b => b.id === bookingId ? { ...b, status: newStatus as any } : b);
                 return {
@@ -180,8 +180,8 @@ const VendorDashboard = () => {
                                             </td>
                                             <td className="p-sm">
                                                 <span className={`badge ${booking.status === 'confirmed' ? 'badge-success bg-green-100 text-green-800' :
-                                                        booking.status === 'pending' ? 'badge-warning bg-yellow-100 text-yellow-800' :
-                                                            'badge-gray'
+                                                    booking.status === 'pending' ? 'badge-warning bg-yellow-100 text-yellow-800' :
+                                                        'badge-gray'
                                                     }`}
                                                     style={{
                                                         padding: '4px 8px',

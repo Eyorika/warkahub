@@ -1,192 +1,192 @@
 import { Link } from 'react-router-dom';
-import { Search, Star, Shield, Zap, Users, Calendar, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { Search, Star, Shield, Zap, Users, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
 
 export const HomePage = () => {
-    const services = [
-        { icon: '🍽️', name: 'Catering', count: '150+ Vendors', color: '#1a8f5c' },
-        { icon: '🎨', name: 'Decoration', count: '120+ Vendors', color: '#f4a623' },
-        { icon: '📸', name: 'Photography', count: '200+ Vendors', color: '#e63946' },
-        { icon: '🎥', name: 'Videography', count: '80+ Vendors', color: '#457b9d' },
-        { icon: '🎵', name: 'Music & DJ', count: '90+ Vendors', color: '#9b59b6' },
-        { icon: '🏛️', name: 'Venue', count: '60+ Venues', color: '#2ecc71' },
-    ];
+  const services = [
+    { icon: '🍽️', name: 'Catering', count: '150+ Vendors', color: '#1a8f5c' },
+    { icon: '🎨', name: 'Decoration', count: '120+ Vendors', color: '#f4a623' },
+    { icon: '📸', name: 'Photography', count: '200+ Vendors', color: '#e63946' },
+    { icon: '🎥', name: 'Videography', count: '80+ Vendors', color: '#457b9d' },
+    { icon: '🎵', name: 'Music & DJ', count: '90+ Vendors', color: '#9b59b6' },
+    { icon: '🏛️', name: 'Venue', count: '60+ Venues', color: '#2ecc71' },
+  ];
 
-    const features = [
-        {
-            icon: <Shield size={32} />,
-            title: 'Verified Vendors',
-            description: 'All service providers are verified and licensed for your peace of mind',
-        },
-        {
-            icon: <Star size={32} />,
-            title: 'Trusted Reviews',
-            description: 'Real reviews from real customers help you make informed decisions',
-        },
-        {
-            icon: <Zap size={32} />,
-            title: 'Instant Booking',
-            description: 'Book services in minutes with our streamlined booking process',
-        },
-        {
-            icon: <Users size={32} />,
-            title: 'Expert Support',
-            description: '24/7 customer support to help you plan the perfect event',
-        },
-    ];
+  const features = [
+    {
+      icon: <Shield size={32} />,
+      title: 'Verified Vendors',
+      description: 'All service providers are verified and licensed for your peace of mind',
+    },
+    {
+      icon: <Star size={32} />,
+      title: 'Trusted Reviews',
+      description: 'Real reviews from real customers help you make informed decisions',
+    },
+    {
+      icon: <Zap size={32} />,
+      title: 'Instant Booking',
+      description: 'Book services in minutes with our streamlined booking process',
+    },
+    {
+      icon: <Users size={32} />,
+      title: 'Expert Support',
+      description: '24/7 customer support to help you plan the perfect event',
+    },
+  ];
 
-    const stats = [
-        { value: '500+', label: 'Verified Vendors' },
-        { value: '2,000+', label: 'Events Completed' },
-        { value: '4.8/5', label: 'Average Rating' },
-        { value: '95%', label: 'Customer Satisfaction' },
-    ];
+  const stats = [
+    { value: '500+', label: 'Verified Vendors' },
+    { value: '2,000+', label: 'Events Completed' },
+    { value: '4.8/5', label: 'Average Rating' },
+    { value: '95%', label: 'Customer Satisfaction' },
+  ];
 
-    return (
-        <div className="home-page">
-            {/* Hero Section */}
-            <section className="hero">
-                <div className="hero-background"></div>
-                <div className="container">
-                    <div className="hero-content animate-fade-in">
-                        <h1 className="hero-title">
-                            Plan Your Perfect Event with <span className="gradient-text">WarkaHub</span>
-                        </h1>
-                        <p className="hero-subtitle">
-                            Ethiopia's #1 marketplace for catering, decoration, photography, and all your event needs.
-                            Book trusted vendors in minutes.
-                        </p>
-                        <div className="hero-actions">
-                            <Link to="/browse" className="btn btn-primary btn-lg">
-                                <Search size={20} />
-                                Browse Services
-                            </Link>
-                            <Link to="/become-vendor" className="btn btn-outline btn-lg">
-                                Become a Vendor
-                            </Link>
-                        </div>
+  return (
+    <div className="home-page">
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-background"></div>
+        <div className="container">
+          <div className="hero-content animate-fade-in">
+            <h1 className="hero-title">
+              Plan Your Perfect Event with <span className="gradient-text">WarkaHub</span>
+            </h1>
+            <p className="hero-subtitle">
+              Ethiopia's #1 marketplace for catering, decoration, photography, and all your event needs.
+              Book trusted vendors in minutes.
+            </p>
+            <div className="hero-actions">
+              <Link to="/browse" className="btn btn-primary btn-lg">
+                <Search size={20} />
+                Browse Services
+              </Link>
+              <Link to="/become-vendor" className="btn btn-outline btn-lg">
+                Become a Vendor
+              </Link>
+            </div>
 
-                        {/* Quick Search */}
-                        <div className="quick-search card-glass">
-                            <input
-                                type="text"
-                                placeholder="Search for caterers, decorators, photographers..."
-                                className="search-input"
-                            />
-                            <button className="btn btn-primary">
-                                <Search size={20} />
-                                Search
-                            </button>
-                        </div>
-                    </div>
+            {/* Quick Search */}
+            <div className="quick-search card-glass">
+              <input
+                type="text"
+                placeholder="Search for caterers, decorators, photographers..."
+                className="search-input"
+              />
+              <button className="btn btn-primary">
+                <Search size={20} />
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            {stats.map((stat, index) => (
+              <div key={index} className="stat-card animate-fade-in">
+                <div className="stat-value">{stat.value}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="services-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Popular Services</h2>
+            <p>Find the perfect vendors for every aspect of your event</p>
+          </div>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <Link
+                key={index}
+                to={`/browse?service=${service.name.toLowerCase()}`}
+                className="service-card card"
+                style={{ '--service-color': service.color } as React.CSSProperties}
+              >
+                <div className="service-icon">{service.icon}</div>
+                <h3 className="service-name">{service.name}</h3>
+                <p className="service-count">{service.count}</p>
+                <div className="service-arrow">
+                  <ArrowRight size={20} />
                 </div>
-            </section>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Stats Section */}
-            <section className="stats-section">
-                <div className="container">
-                    <div className="stats-grid">
-                        {stats.map((stat, index) => (
-                            <div key={index} className="stat-card animate-fade-in">
-                                <div className="stat-value">{stat.value}</div>
-                                <div className="stat-label">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Why Choose WarkaHub?</h2>
+            <p>We make event planning simple, secure, and stress-free</p>
+          </div>
+          <div className="features-grid">
+            {features.map((feature, index) => (
+              <div key={index} className="feature-card card">
+                <div className="feature-icon">{feature.icon}</div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Services Section */}
-            <section className="services-section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>Popular Services</h2>
-                        <p>Find the perfect vendors for every aspect of your event</p>
-                    </div>
-                    <div className="services-grid">
-                        {services.map((service, index) => (
-                            <Link
-                                key={index}
-                                to={`/browse?service=${service.name.toLowerCase()}`}
-                                className="service-card card"
-                                style={{ '--service-color': service.color } as React.CSSProperties}
-                            >
-                                <div className="service-icon">{service.icon}</div>
-                                <h3 className="service-name">{service.name}</h3>
-                                <p className="service-count">{service.count}</p>
-                                <div className="service-arrow">
-                                    <ArrowRight size={20} />
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      {/* How It Works */}
+      <section className="how-it-works">
+        <div className="container">
+          <div className="section-header">
+            <h2>How It Works</h2>
+            <p>Get started in three simple steps</p>
+          </div>
+          <div className="steps-grid">
+            <div className="step-card">
+              <div className="step-number">1</div>
+              <div className="step-icon"><Search size={40} /></div>
+              <h3>Search & Compare</h3>
+              <p>Browse verified vendors, compare prices, and read reviews</p>
+            </div>
+            <div className="step-card">
+              <div className="step-number">2</div>
+              <div className="step-icon"><Calendar size={40} /></div>
+              <h3>Book & Pay</h3>
+              <p>Select your date, confirm details, and pay securely</p>
+            </div>
+            <div className="step-card">
+              <div className="step-number">3</div>
+              <div className="step-icon"><CheckCircle size={40} /></div>
+              <h3>Enjoy Your Event</h3>
+              <p>Relax while professionals handle everything</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Features Section */}
-            <section className="features-section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>Why Choose WarkaHub?</h2>
-                        <p>We make event planning simple, secure, and stress-free</p>
-                    </div>
-                    <div className="features-grid">
-                        {features.map((feature, index) => (
-                            <div key={index} className="feature-card card">
-                                <div className="feature-icon">{feature.icon}</div>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-content card-glass">
+            <div className="cta-text">
+              <h2>Ready to Plan Your Event?</h2>
+              <p>Join thousands of satisfied customers who trust WarkaHub</p>
+            </div>
+            <Link to="/register" className="btn btn-secondary btn-lg">
+              Get Started Free
+            </Link>
+          </div>
+        </div>
+      </section>
 
-            {/* How It Works */}
-            <section className="how-it-works">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>How It Works</h2>
-                        <p>Get started in three simple steps</p>
-                    </div>
-                    <div className="steps-grid">
-                        <div className="step-card">
-                            <div className="step-number">1</div>
-                            <div className="step-icon"><Search size={40} /></div>
-                            <h3>Search & Compare</h3>
-                            <p>Browse verified vendors, compare prices, and read reviews</p>
-                        </div>
-                        <div className="step-card">
-                            <div className="step-number">2</div>
-                            <div className="step-icon"><Calendar size={40} /></div>
-                            <h3>Book & Pay</h3>
-                            <p>Select your date, confirm details, and pay securely</p>
-                        </div>
-                        <div className="step-card">
-                            <div className="step-number">3</div>
-                            <div className="step-icon"><CheckCircle size={40} /></div>
-                            <h3>Enjoy Your Event</h3>
-                            <p>Relax while professionals handle everything</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="cta-section">
-                <div className="container">
-                    <div className="cta-content card-glass">
-                        <div className="cta-text">
-                            <h2>Ready to Plan Your Event?</h2>
-                            <p>Join thousands of satisfied customers who trust WarkaHub</p>
-                        </div>
-                        <Link to="/register" className="btn btn-secondary btn-lg">
-                            Get Started Free
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            <style>{`
+      <style>{`
         .home-page {
           min-height: 100vh;
         }
@@ -509,6 +509,6 @@ export const HomePage = () => {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };

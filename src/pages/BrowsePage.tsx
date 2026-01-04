@@ -1,221 +1,220 @@
 import { useState } from 'react';
 import { Search, Filter, Star, MapPin, DollarSign, Shield, Crown } from 'lucide-react';
-import type { VendorProfile, ServiceType, SearchFilters } from '../types';
+import type { VendorProfile, ServiceType } from '../types';
 
 // Mock data - replace with API calls
 const mockVendors: VendorProfile[] = [
-    {
-        id: '1',
-        name: 'Abebe Catering',
-        email: 'abebe@example.com',
-        phone: '+251911234567',
-        role: 'vendor',
-        businessName: 'Abebe Traditional Catering',
-        serviceType: ['catering'],
-        description: 'Authentic Ethiopian cuisine for all occasions. Specializing in traditional dishes and modern fusion.',
-        priceRange: { min: 5000, max: 15000 },
-        location: 'Bole, Addis Ababa',
-        images: ['https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800'],
-        rating: 4.8,
-        reviewCount: 127,
-        subscriptionTier: 'premium',
-        isVerified: true,
-        createdAt: '2024-01-01',
-    },
-    {
-        id: '2',
-        name: 'Selam Events',
-        email: 'selam@example.com',
-        phone: '+251922345678',
-        role: 'vendor',
-        businessName: 'Selam Event Decoration',
-        serviceType: ['decoration'],
-        description: 'Creating magical moments with stunning decorations. Weddings, birthdays, and corporate events.',
-        priceRange: { min: 8000, max: 25000 },
-        location: 'Megenagna, Addis Ababa',
-        images: ['https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800'],
-        rating: 4.9,
-        reviewCount: 89,
-        subscriptionTier: 'pro',
-        isVerified: true,
-        createdAt: '2024-01-15',
-    },
-    {
-        id: '3',
-        name: 'Dawit Photography',
-        email: 'dawit@example.com',
-        phone: '+251933456789',
-        role: 'vendor',
-        businessName: 'Dawit Professional Photography',
-        serviceType: ['photography', 'videography'],
-        description: 'Capturing your precious moments with artistic excellence. 10+ years of experience.',
-        priceRange: { min: 10000, max: 30000 },
-        location: 'Piassa, Addis Ababa',
-        images: ['https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800'],
-        rating: 4.7,
-        reviewCount: 156,
-        subscriptionTier: 'premium',
-        isVerified: true,
-        createdAt: '2024-02-01',
-    },
+  {
+    id: '1',
+    name: 'Abebe Catering',
+    email: 'abebe@example.com',
+    phone: '+251911234567',
+    role: 'vendor',
+    businessName: 'Abebe Traditional Catering',
+    serviceType: ['catering'],
+    description: 'Authentic Ethiopian cuisine for all occasions. Specializing in traditional dishes and modern fusion.',
+    priceRange: { min: 5000, max: 15000 },
+    location: 'Bole, Addis Ababa',
+    images: ['https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800'],
+    rating: 4.8,
+    reviewCount: 127,
+    subscriptionTier: 'premium',
+    isVerified: true,
+    createdAt: '2024-01-01',
+  },
+  {
+    id: '2',
+    name: 'Selam Events',
+    email: 'selam@example.com',
+    phone: '+251922345678',
+    role: 'vendor',
+    businessName: 'Selam Event Decoration',
+    serviceType: ['decoration'],
+    description: 'Creating magical moments with stunning decorations. Weddings, birthdays, and corporate events.',
+    priceRange: { min: 8000, max: 25000 },
+    location: 'Megenagna, Addis Ababa',
+    images: ['https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800'],
+    rating: 4.9,
+    reviewCount: 89,
+    subscriptionTier: 'pro',
+    isVerified: true,
+    createdAt: '2024-01-15',
+  },
+  {
+    id: '3',
+    name: 'Dawit Photography',
+    email: 'dawit@example.com',
+    phone: '+251933456789',
+    role: 'vendor',
+    businessName: 'Dawit Professional Photography',
+    serviceType: ['photography', 'videography'],
+    description: 'Capturing your precious moments with artistic excellence. 10+ years of experience.',
+    priceRange: { min: 10000, max: 30000 },
+    location: 'Piassa, Addis Ababa',
+    images: ['https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800'],
+    rating: 4.7,
+    reviewCount: 156,
+    subscriptionTier: 'premium',
+    isVerified: true,
+    createdAt: '2024-02-01',
+  },
 ];
 
 export const BrowsePage = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filters, setFilters] = useState<SearchFilters>({});
-    const [showFilters, setShowFilters] = useState(false);
-    const [vendors] = useState<VendorProfile[]>(mockVendors);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
+  const [vendors] = useState<VendorProfile[]>(mockVendors);
 
-    const serviceTypes: ServiceType[] = ['catering', 'decoration', 'photography', 'videography', 'music', 'venue', 'planning'];
+  const serviceTypes: ServiceType[] = ['catering', 'decoration', 'photography', 'videography', 'music', 'venue', 'planning'];
 
-    return (
-        <div className="browse-page">
-            <div className="browse-header">
-                <div className="container">
-                    <h1>Find Your Perfect Vendor</h1>
-                    <p>Browse {vendors.length}+ verified service providers</p>
+  return (
+    <div className="browse-page">
+      <div className="browse-header">
+        <div className="container">
+          <h1>Find Your Perfect Vendor</h1>
+          <p>Browse {vendors.length}+ verified service providers</p>
 
-                    <div className="search-bar">
-                        <Search size={20} className="search-icon" />
-                        <input
-                            type="text"
-                            placeholder="Search by name, service, or location..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="search-input"
-                        />
-                        <button
-                            className="filter-toggle btn btn-outline"
-                            onClick={() => setShowFilters(!showFilters)}
-                        >
-                            <Filter size={20} />
-                            Filters
-                        </button>
-                    </div>
+          <div className="search-bar">
+            <Search size={20} className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search by name, service, or location..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="search-input"
+            />
+            <button
+              className="filter-toggle btn btn-outline"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              <Filter size={20} />
+              Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="browse-content">
+          {/* Filters Sidebar */}
+          {showFilters && (
+            <aside className="filters-sidebar card animate-slide-in">
+              <h3>Filters</h3>
+
+              <div className="filter-section">
+                <h4>Service Type</h4>
+                <div className="filter-options">
+                  {serviceTypes.map((service) => (
+                    <label key={service} className="checkbox-label">
+                      <input type="checkbox" />
+                      <span>{service.charAt(0).toUpperCase() + service.slice(1)}</span>
+                    </label>
+                  ))}
                 </div>
-            </div>
+              </div>
 
-            <div className="container">
-                <div className="browse-content">
-                    {/* Filters Sidebar */}
-                    {showFilters && (
-                        <aside className="filters-sidebar card animate-slide-in">
-                            <h3>Filters</h3>
-
-                            <div className="filter-section">
-                                <h4>Service Type</h4>
-                                <div className="filter-options">
-                                    {serviceTypes.map((service) => (
-                                        <label key={service} className="checkbox-label">
-                                            <input type="checkbox" />
-                                            <span>{service.charAt(0).toUpperCase() + service.slice(1)}</span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="filter-section">
-                                <h4>Price Range (Birr)</h4>
-                                <div className="price-inputs">
-                                    <input type="number" placeholder="Min" className="input" />
-                                    <span>-</span>
-                                    <input type="number" placeholder="Max" className="input" />
-                                </div>
-                            </div>
-
-                            <div className="filter-section">
-                                <h4>Rating</h4>
-                                <div className="filter-options">
-                                    {[5, 4, 3].map((rating) => (
-                                        <label key={rating} className="checkbox-label">
-                                            <input type="checkbox" />
-                                            <span>
-                                                {rating}+ <Star size={16} className="inline-star" />
-                                            </span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="filter-section">
-                                <label className="checkbox-label">
-                                    <input type="checkbox" />
-                                    <span>
-                                        <Shield size={16} className="inline-icon" />
-                                        Verified Only
-                                    </span>
-                                </label>
-                            </div>
-
-                            <button className="btn btn-primary" style={{ width: '100%' }}>
-                                Apply Filters
-                            </button>
-                        </aside>
-                    )}
-
-                    {/* Vendors Grid */}
-                    <div className="vendors-grid">
-                        {vendors.map((vendor) => (
-                            <div key={vendor.id} className="vendor-card card">
-                                {vendor.subscriptionTier === 'premium' && (
-                                    <div className="premium-badge badge badge-secondary">
-                                        <Crown size={14} />
-                                        Premium
-                                    </div>
-                                )}
-
-                                <div className="vendor-image">
-                                    <img src={vendor.images[0]} alt={vendor.businessName} />
-                                    {vendor.isVerified && (
-                                        <div className="verified-badge">
-                                            <Shield size={16} />
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="vendor-info">
-                                    <h3>{vendor.businessName}</h3>
-
-                                    <div className="vendor-meta">
-                                        <div className="rating">
-                                            <Star size={16} fill="currentColor" />
-                                            <span>{vendor.rating}</span>
-                                            <span className="review-count">({vendor.reviewCount} reviews)</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="vendor-services">
-                                        {vendor.serviceType.map((service) => (
-                                            <span key={service} className="service-tag badge badge-primary">
-                                                {service}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <p className="vendor-description">{vendor.description}</p>
-
-                                    <div className="vendor-details">
-                                        <div className="detail-item">
-                                            <MapPin size={16} />
-                                            <span>{vendor.location}</span>
-                                        </div>
-                                        <div className="detail-item">
-                                            <DollarSign size={16} />
-                                            <span>{vendor.priceRange.min.toLocaleString()} - {vendor.priceRange.max.toLocaleString()} Birr</span>
-                                        </div>
-                                    </div>
-
-                                    <button className="btn btn-primary" style={{ width: '100%' }}>
-                                        View Profile & Book
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+              <div className="filter-section">
+                <h4>Price Range (Birr)</h4>
+                <div className="price-inputs">
+                  <input type="number" placeholder="Min" className="input" />
+                  <span>-</span>
+                  <input type="number" placeholder="Max" className="input" />
                 </div>
-            </div>
+              </div>
 
-            <style>{`
+              <div className="filter-section">
+                <h4>Rating</h4>
+                <div className="filter-options">
+                  {[5, 4, 3].map((rating) => (
+                    <label key={rating} className="checkbox-label">
+                      <input type="checkbox" />
+                      <span>
+                        {rating}+ <Star size={16} className="inline-star" />
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="filter-section">
+                <label className="checkbox-label">
+                  <input type="checkbox" />
+                  <span>
+                    <Shield size={16} className="inline-icon" />
+                    Verified Only
+                  </span>
+                </label>
+              </div>
+
+              <button className="btn btn-primary" style={{ width: '100%' }}>
+                Apply Filters
+              </button>
+            </aside>
+          )}
+
+          {/* Vendors Grid */}
+          <div className="vendors-grid">
+            {vendors.map((vendor) => (
+              <div key={vendor.id} className="vendor-card card">
+                {vendor.subscriptionTier === 'premium' && (
+                  <div className="premium-badge badge badge-secondary">
+                    <Crown size={14} />
+                    Premium
+                  </div>
+                )}
+
+                <div className="vendor-image">
+                  <img src={vendor.images[0]} alt={vendor.businessName} />
+                  {vendor.isVerified && (
+                    <div className="verified-badge">
+                      <Shield size={16} />
+                    </div>
+                  )}
+                </div>
+
+                <div className="vendor-info">
+                  <h3>{vendor.businessName}</h3>
+
+                  <div className="vendor-meta">
+                    <div className="rating">
+                      <Star size={16} fill="currentColor" />
+                      <span>{vendor.rating}</span>
+                      <span className="review-count">({vendor.reviewCount} reviews)</span>
+                    </div>
+                  </div>
+
+                  <div className="vendor-services">
+                    {vendor.serviceType.map((service) => (
+                      <span key={service} className="service-tag badge badge-primary">
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="vendor-description">{vendor.description}</p>
+
+                  <div className="vendor-details">
+                    <div className="detail-item">
+                      <MapPin size={16} />
+                      <span>{vendor.location}</span>
+                    </div>
+                    <div className="detail-item">
+                      <DollarSign size={16} />
+                      <span>{vendor.priceRange.min.toLocaleString()} - {vendor.priceRange.max.toLocaleString()} Birr</span>
+                    </div>
+                  </div>
+
+                  <button className="btn btn-primary" style={{ width: '100%' }}>
+                    View Profile & Book
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
         .browse-page {
           min-height: 100vh;
           padding-bottom: 2rem;
@@ -479,6 +478,6 @@ export const BrowsePage = () => {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
