@@ -129,6 +129,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 email: userData.email, // Storing email in profile for easy access
                 role: userData.role,
                 business_name: userData.role === 'vendor' ? (userData as any).businessName : null,
+                service_types: userData.role === 'vendor' ? (userData as any).serviceTypes : null,
                 created_at: new Date().toISOString(),
             }]);
 

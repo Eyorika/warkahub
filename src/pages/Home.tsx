@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Search, Calendar, Users, Award, TrendingUp, Shield, ArrowRight, Star, MapPin, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Home = () => {
     const featuredVendors = [
@@ -74,11 +76,18 @@ const Home = () => {
 
     return (
         <div className="home-page">
+            <SEO title="Home" />
             {/* Hero Section */}
             <section className="hero">
                 <div className="hero-background"></div>
                 <div className="container">
-                    <div className="hero-content">
+                    <motion.div
+                        className="hero-content"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
                         <h1 className="hero-title animate-fade-in">
                             Your Perfect Event
                             <span className="hero-title-accent"> Starts Here</span>
@@ -103,20 +112,54 @@ const Home = () => {
                                 <ArrowRight size={20} />
                             </Link>
                         </div>
+                    </motion.div>
+                </div>
+            </section>
 
-                        {/* Quick Service Buttons */}
-                        <div className="hero-services">
-                            <Link to="/vendors?type=catering" className="service-chip">🍽️ Catering</Link>
-                            <Link to="/vendors?type=decoration" className="service-chip">🎨 Decoration</Link>
-                            <Link to="/vendors?type=photography" className="service-chip">📸 Photography</Link>
-                            <Link to="/vendors?type=venue" className="service-chip">🏛️ Venues</Link>
-                        </div>
+            {/* Services Section */}
+            <section className="services-section py-xl bg-white" >
+                <div className="container">
+                    <div className="section-header">
+                        <h2>Popular Services</h2>
+                        <p>Find the perfect vendors for every aspect of your event</p>
+                    </div>
+                    <div className="grid grid-3 gap-lg">
+                        <Link to="/vendors?type=catering" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>🍽️</div>
+                            <h3>Catering</h3>
+                            <p className="text-gray">150+ Vendors</p>
+                        </Link>
+                        <Link to="/vendors?type=decoration" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>🎨</div>
+                            <h3>Decoration</h3>
+                            <p className="text-gray">120+ Vendors</p>
+                        </Link>
+                        <Link to="/vendors?type=photography" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>📸</div>
+                            <h3>Photography</h3>
+                            <p className="text-gray">200+ Vendors</p>
+                        </Link>
+                        <Link to="/vendors?type=venue" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>🏛️</div>
+                            <h3>Venues</h3>
+                            <p className="text-gray">60+ Vendors</p>
+                        </Link>
+                        <Link to="/vendors?type=music" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>🎵</div>
+                            <h3>Music & DJ</h3>
+                            <p className="text-gray">90+ Vendors</p>
+                        </Link>
+                        <Link to="/vendors?type=planning" className="service-card card flex-center flex-column gap-sm">
+                            <div className="service-icon" style={{ fontSize: '3rem' }}>📋</div>
+                            <h3>Planning</h3>
+                            <p className="text-gray">40+ Vendors</p>
+                        </Link>
                     </div>
                 </div>
             </section>
 
             {/* Stats Section */}
-            <section className="stats-section">
+            <section className="stats-section" >
                 <div className="container">
                     <div className="stats-grid">
                         {stats.map((stat, index) => (
@@ -131,7 +174,7 @@ const Home = () => {
             </section>
 
             {/* Featured Vendors */}
-            <section className="featured-section">
+            <section className="featured-section" >
                 <div className="container">
                     <div className="section-header">
                         <h2>Featured Vendors</h2>
@@ -186,7 +229,7 @@ const Home = () => {
             </section>
 
             {/* How It Works */}
-            <section className="how-it-works-section">
+            <section className="how-it-works-section py-xl" >
                 <div className="container">
                     <div className="section-header">
                         <h2>How WarkaHub Works</h2>
@@ -209,7 +252,7 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="cta-section">
+            <section className="cta-section" >
                 <div className="container">
                     <div className="cta-content">
                         <h2>Ready to Plan Your Event?</h2>
@@ -228,7 +271,7 @@ const Home = () => {
             </section>
 
             {/* Vendor CTA */}
-            <section className="vendor-cta-section">
+            <section className="vendor-cta-section" >
                 <div className="container">
                     <div className="vendor-cta-card card-glass">
                         <div className="vendor-cta-content">
@@ -240,7 +283,7 @@ const Home = () => {
                                 <li>✓ Secure payments through Telebirr & Chapa</li>
                                 <li>✓ Build your reputation with reviews</li>
                             </ul>
-                            <Link to="/vendor/register" className="btn btn-secondary btn-lg">
+                            <Link to="/register?role=vendor" className="btn btn-secondary btn-lg">
                                 Become a Vendor
                                 <ArrowRight size={20} />
                             </Link>

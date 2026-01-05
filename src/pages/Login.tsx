@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import SEO from '../components/SEO';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Login = () => {
 
     return (
         <div className="auth-page min-h-screen flex-center py-xl" style={{ minHeight: '80vh', background: 'var(--color-light)' }}>
+            <SEO title="Login" description="Login to your WarkaHub account to manage your bookings or your vendor profile." />
             <div className="container" style={{ maxWidth: '450px' }}>
                 <div className="card shadow-lg animate-fade-in">
                     <div className="text-center mb-lg">

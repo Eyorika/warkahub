@@ -48,7 +48,7 @@ export type EventType =
 export interface Booking {
   id: string;
   customerId: string;
-  vendorId: string;
+  vendorId?: string; // Optional during the initial request phase
   eventType: EventType;
   eventDate: string;
   eventTime: string;
@@ -56,7 +56,7 @@ export interface Booking {
   guestCount: number;
   budget: number;
   specialRequirements?: string;
-  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
+  status: 'pending_match' | 'matched' | 'confirmed' | 'completed' | 'cancelled';
   paymentStatus: 'pending' | 'paid' | 'refunded';
   paymentMethod: 'telebirr' | 'chapa';
   createdAt: string;

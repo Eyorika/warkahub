@@ -1,9 +1,11 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Star, MapPin, Check, Phone, ChevronLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import type { VendorProfile } from '../types';
+import SEO from '../components/SEO';
 
 const VendorDetails = () => {
     const { id } = useParams();
@@ -133,11 +135,6 @@ const VendorDetails = () => {
 
         setReviewSubmitting(true);
         try {
-            // Note: In a real system, we'd verify a booking exists. 
-            // For MVP/Demo, we'll look for any "completed" or "confirmed" booking if strict, 
-            // or just allow it if we want to be flexible.
-            // Let's try to find a booking ID to satisfy the schema's NOT NULL constraint.
-
             const { data: bookingData } = await supabase
                 .from('bookings')
                 .select('id')
@@ -147,8 +144,6 @@ const VendorDetails = () => {
                 .single();
 
             if (!bookingData) {
-                // If no booking found, we might need a "dummy" or just tell the user they need to book first.
-                // For this demo, let's assume they need a booking.
                 throw new Error("You must have a booking with this vendor to leave a review.");
             }
 
@@ -190,6 +185,10 @@ const VendorDetails = () => {
 
     return (
         <div className="vendor-details-page">
+            <SEO
+                title={`${vendor.businessName} | ${vendor.serviceType?.[0] || 'Vendor'} in ${vendor.location}`}
+                description={vendor.description?.substring(0, 160)}
+            />
             {/* Breadcrumb */}
             <div className="bg-white border-b py-sm">
                 <div className="container">
@@ -200,9 +199,14 @@ const VendorDetails = () => {
             </div>
 
             <div className="container mt-md">
-                <div className="grid gap-lg" style={{ gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)' }}>
+                <div className="grid gap-lg vendor-details-grid">
                     {/* Main Content */}
-                    <div className="details-content">
+                    <motion.div
+                        className="details-content"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         {/* Hero Image */}
                         <div className="hero-image mb-md" style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', height: '400px' }}>
                             <img src={vendor.images?.[0]} alt={vendor.businessName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -210,7 +214,7 @@ const VendorDetails = () => {
 
                         {/* Header Info */}
                         <div className="mb-lg">
-                            <div className="flex-between mb-sm">
+                            <div className="flex-between mb-sm flex-wrap gap-md">
                                 <h1 className="mb-0">{vendor.businessName}</h1>
                                 <div className="flex-center gap-xs">
                                     <Star size={24} fill="#f4a623" color="#f4a623" />
@@ -219,7 +223,7 @@ const VendorDetails = () => {
                                 </div>
                             </div>
 
-                            <div className="flex gap-md text-gray mb-md">
+                            <div className="flex gap-md text-gray mb-md flex-wrap">
                                 <div className="flex-center gap-xs"><MapPin size={18} /> {vendor.location}</div>
                                 <div className="flex-center gap-xs text-primary font-bold">
                                     {vendor.priceRange?.min.toLocaleString()} - {vendor.priceRange?.max.toLocaleString()} ETB
@@ -230,12 +234,12 @@ const VendorDetails = () => {
                             </div>
 
                             {/* Tabs */}
-                            <div className="tabs flex border-b mb-md">
+                            <div className="tabs flex border-b mb-md overflow-x-auto">
                                 {['about', 'portfolio', 'reviews'].map(tab => (
                                     <button
                                         key={tab}
                                         className={`tab-btn px-lg py-sm ${activeTab === tab ? 'border-b-2 border-primary text-primary font-bold' : 'text-gray'}`}
-                                        style={{ background: 'none', border: 'none', borderBottom: activeTab === tab ? '2px solid var(--color-primary)' : 'none', cursor: 'pointer', textTransform: 'capitalize' }}
+                                        style={{ background: 'none', border: 'none', borderBottom: activeTab === tab ? '2px solid var(--color-primary)' : 'none', cursor: 'pointer', textTransform: 'capitalize', whiteSpace: 'nowrap' }}
                                         onClick={() => setActiveTab(tab as any)}
                                     >
                                         {tab}
@@ -244,9 +248,12 @@ const VendorDetails = () => {
                             </div>
 
                             {/* Tab Content */}
-                            <div className="tab-content animate-fade-in">
+                            <div className="tab-content">
                                 {activeTab === 'about' && (
-                                    <div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                    >
                                         <h3 className="mb-sm">About Us</h3>
                                         <p className="mb-lg text-gray leading-relaxed">{vendor.description}</p>
 
@@ -263,20 +270,28 @@ const VendorDetails = () => {
                                                 </div>
                                             </>
                                         )}
-                                    </div>
+                                    </motion.div>
                                 )}
 
                                 {activeTab === 'portfolio' && (
-                                    <div className="grid grid-2 gap-md">
+                                    <motion.div
+                                        className="grid grid-2 gap-md"
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                    >
                                         {vendor.images?.map((img, idx) => (
                                             <img key={idx} src={img} alt={`Portfolio ${idx}`} className="rounded hover:opacity-90 transition" style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
                                         ))}
-                                        <p className="text-gray col-span-2 text-center">More images coming soon...</p>
-                                    </div>
+                                        <p className="text-gray col-span-full text-center py-md">More images coming soon...</p>
+                                    </motion.div>
                                 )}
 
                                 {activeTab === 'reviews' && (
-                                    <div className="reviews-section">
+                                    <motion.div
+                                        className="reviews-section"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                    >
                                         <div className="flex-between mb-lg">
                                             <h3>Customer Reviews</h3>
                                             {user && user.role === 'customer' && (
@@ -361,15 +376,20 @@ const VendorDetails = () => {
                                                 </form>
                                             </div>
                                         )}
-                                    </div>
+                                    </motion.div>
                                 )}
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Booking Sidebar */}
-                    <div className="booking-sidebar">
-                        <div className="card sticky top-4 shadow-lg" style={{ position: 'sticky', top: '2rem' }}>
+                    <motion.div
+                        className="booking-sidebar"
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="card sticky-sidebar shadow-lg">
                             <h3 className="mb-md">Book This Vendor</h3>
 
                             <form className="booking-form flex-column gap-md" onSubmit={handleBooking}>
@@ -449,7 +469,7 @@ const VendorDetails = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
